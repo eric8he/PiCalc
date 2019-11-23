@@ -10,7 +10,7 @@ import org.apfloat.*;
  *
  */
 public class ChudA extends Thread {
-	Apint result;
+	Apfloat result;
 	long iterations;
 	
 	public static final Apint A = new Apint(13591409);
@@ -25,9 +25,10 @@ public class ChudA extends Thread {
 		Apint i = Apint.ZERO;
 		Apint its = new Apint(iterations);
 		for(; i.compareTo(its) == -1; i = i.add(Apint.ONE)) {
-			product.multiply(A.add(B.multiply(product)));
+			product = product.multiply(A.add(B.multiply(product)));
 		}
 		
 		result = product;
+		System.out.println("a ended, "+result);
 	}
 }

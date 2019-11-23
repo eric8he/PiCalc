@@ -17,7 +17,10 @@ public class Main {
 			System.out.println(new Ansi().fgBrightCyan().bgCyan().a("Digits to compute:"));
 			int p = Integer.parseInt(s.nextLine());
 			
-			System.out.println(calculateChudnovsky(p));
+			ChudnovskyCalculator c = new ChudnovskyCalculator(p);
+			c.run();
+			while(c.result==null){}
+			System.out.println(c.result);
 		}
 	}
 	
