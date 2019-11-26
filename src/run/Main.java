@@ -50,12 +50,12 @@ public class Main {
 				}
 				
 				ChudnovskyCalculator c = new ChudnovskyCalculator(p);
-				//try {
+				try {
 					c.run();
 					while(c.result==null){}
-				//} catch (Exception e) {
-				//	System.out.println(new Ansi().fgBrightRed().a("Could not allocate swap!"));
-				//}
+				} catch (Exception e) {
+					System.out.println(new Ansi().fgBrightRed().a("Could not allocate swap!"));
+				}
 				
 				System.out.print(new Ansi().fg(Color.WHITE));
 				long x = System.currentTimeMillis();

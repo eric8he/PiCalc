@@ -12,12 +12,18 @@ public class SquareRooter extends Thread{
 	public long time;
 	
 	public SquareRooter(long digits) {
+		
 		this.digits = digits;
+		
 	}
 	
 	public void run() {
+		
 		long microB = System.currentTimeMillis();
+		
 		result = ApfloatMath.sqrt(new Apfloat(10005,digits));
+		
 		time = System.currentTimeMillis()-microB;
+		
 	}
 }
