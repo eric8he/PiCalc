@@ -63,10 +63,9 @@ public class ChudnovskyCalculator implements Runnable{
 			
 			if(l % 5000 == 0) {
 				
-				System.out.print(new Ansi().cursorToColumn(0).fgGreen().a(ChudnovskyBinarySplitElement.runningThreads+" threads running, elapsed time " +(System.currentTimeMillis()-begin)+"ms       "));
+				//System.out.print(new Ansi().cursorToColumn(0).fgGreen().a(ChudnovskyBinarySplitElement.runningThreads+" threads running, elapsed time " +(System.currentTimeMillis()-begin)+"ms       "));
 			
 			}
-			
 			l++;
 		}
 		
