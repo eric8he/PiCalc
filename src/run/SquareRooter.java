@@ -1,7 +1,11 @@
 package run;
 
+import java.util.Properties;
+
 import org.apfloat.Apfloat;
+import org.apfloat.ApfloatContext;
 import org.apfloat.ApfloatMath;
+import org.apfloat.spi.FilenameGenerator;
 import org.fusesource.jansi.Ansi;
 
 public class SquareRooter extends Thread{
@@ -18,6 +22,12 @@ public class SquareRooter extends Thread{
 	}
 	
 	public void run() {
+		
+		Properties p = (Properties) ApfloatContext.getContext().getProperties().clone();
+		
+		p.setProperty(ApfloatContext.FILE_SUFFIX, ".sqrt");
+		
+		ApfloatContext.setThreadContext(new ApfloatContext(p));
 		
 		long microB = System.currentTimeMillis();
 		

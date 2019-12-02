@@ -1,18 +1,11 @@
 package run;
 
-import org.apfloat.Apint;
+import java.util.Properties;
+
+import org.apfloat.*;
 
 public class ChudnovskyBinarySplitElement extends Thread {
 	public static int MAX_LVL = 2; // 2^(N+1)-1 threads
-	
-	public static final Apint C3_OVER_24 = new Apint(10939058860032000L);
-	
-	public static final Apint TWO = new Apint(2);
-	public static final Apint FIVE = new Apint(5);
-	public static final Apint SIX = new Apint(6);
-	
-	public static final Apint Y = new Apint(13591409L);
-	public static final Apint Z = new Apint(545140134L);
 	
 	public Apint[] result;
 	
@@ -29,28 +22,39 @@ public class ChudnovskyBinarySplitElement extends Thread {
 		this.level = level;
 	}
 	
-	public void run() {
+	public void run() {		
 		runningThreads++;
 		result = split(begin, end);
 		runningThreads--;
 	}
 	
 	public Apint[] split(long a, long b) {
+		Apint C3_OVER_24 = new Apint(10939058860032000L);
+		
+		Apint TWO = new Apint(2);
+		Apint FIVE = new Apint(5);
+		Apint SIX = new Apint(6);
+		
+		Apint Y = new Apint(13591409L);
+		Apint Z = new Apint(545140134L);
+		
 		Apint A = new Apint(a);
 		
 		Apint Qab;
 		Apint Pab;
 		Apint Tab;
 		
+		Apint ONE = new Apint(1);
+		
 		if(b - a == 1) {
 			if(a == 0) {
-				Pab = Apint.ONE;
-				Qab = Apint.ONE;
+				Pab = ONE;
+				Qab = ONE;
 			}
 			else {
 				Pab = (SIX.multiply(A).subtract(FIVE))
-						.multiply(TWO.multiply(A).subtract(Apint.ONE))
-						.multiply(SIX.multiply(A).subtract(Apint.ONE));
+						.multiply(TWO.multiply(A).subtract(ONE))
+						.multiply(SIX.multiply(A).subtract(ONE));
 				Qab = A.multiply(A.multiply(A)).multiply(C3_OVER_24);
 			}
 			Tab = Pab.multiply(Y.add(Z.multiply(A)));

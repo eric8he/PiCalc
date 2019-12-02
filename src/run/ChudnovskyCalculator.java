@@ -3,22 +3,10 @@ package run;
 import java.util.*;
 import org.apfloat.*;
 import org.fusesource.jansi.*;
+import org.apfloat.internal.*;
 
 public class ChudnovskyCalculator implements Runnable{
 	public static final double GAIN = 14.18164746272547765552552167818177086376912528982872695981685433294579740853885;
-	
-	public static Apfloat C23 = new Apint(512384048);
-	public static Apfloat TWELVE = new Apint(12);
-	public static Apint C = new Apint(640320);
-	public static Apint C3_OVER_24 = new Apint(10939058860032000L);
-	public static Apint L = new Apint(426880);
-	
-	public static Apint TWO = new Apint(2);
-	public static Apint FIVE = new Apint(5);
-	public static Apint SIX = new Apint(6);
-	
-	public static Apint Y = new Apint(13591409L);
-	public static Apint Z = new Apint(545140134L);
 	
 	private static Apfloat wrapper;
 	
@@ -34,17 +22,30 @@ public class ChudnovskyCalculator implements Runnable{
 		digits = precision;
 		iterations = (long)Math.ceil(digits/GAIN);
 		wrapper = new Apfloat(1,digits);
-		TWELVE = new Apfloat(12,precision);
 		
 	}
 	
 	public void run() {
+		ApfloatContext ctx = ApfloatContext.getContext();
+
+        Properties properties = new Properties();
+
+        properties.setProperty(ApfloatContext.BUILDER_FACTORY, "org.apfloat.internal." + (this.digits > 80000000 ? "Long" : "Int") + "BuilderFactory");
+		properties.setProperty(ApfloatContext.FILE_PATH, "C:/calc/");
+		
+		
+        ctx.setProperties(properties);
+		
+		System.out.println(new Ansi().fgBrightMagenta().a("Setting context: " + digits +
+				" digits is " + (digits > 220000000 ? "greater" : "less") + " than threshold, using " + 
+				(digits > 220000000 ? "LongBuilderFactory" : "IntBuilderFactory")));
 		
 		result = calculate(iterations);
 		
 	}
 	
 	public Apfloat calculate(long its) {
+		Apint L = new Apint(426880);
 		
 		ChudnovskyBinarySplitElement base = new ChudnovskyBinarySplitElement(0,its,0);
 		
