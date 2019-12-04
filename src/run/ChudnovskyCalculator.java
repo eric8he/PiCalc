@@ -38,7 +38,7 @@ public class ChudnovskyCalculator implements Runnable{
 		
 		System.out.println(new Ansi().fgBrightMagenta().a("Setting context: " + digits +
 				" digits is " + (digits > 220000000 ? "greater" : "less") + " than threshold, using " + 
-				(digits > 220000000 ? "LongBuilderFactory" : "IntBuilderFactory")));
+				(digits > 110000000 ? "LongBuilderFactory" : "IntBuilderFactory")));
 		
 		result = calculate(iterations);
 		
