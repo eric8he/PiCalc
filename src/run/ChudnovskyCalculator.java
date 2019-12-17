@@ -3,12 +3,9 @@ package run;
 import java.util.*;
 import org.apfloat.*;
 import org.fusesource.jansi.*;
-import org.apfloat.internal.*;
 
 public class ChudnovskyCalculator implements Runnable{
 	public static final double GAIN = 14.18164746272547765552552167818177086376912528982872695981685433294579740853885;
-	
-	private static Apfloat wrapper;
 	
 	public Apfloat result;
 	
@@ -23,7 +20,6 @@ public class ChudnovskyCalculator implements Runnable{
 
 		digits = precision;
 		iterations = (long)Math.ceil(digits/GAIN);
-		wrapper = new Apfloat(1,digits);
 		
 	}
 	

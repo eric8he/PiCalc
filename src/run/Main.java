@@ -3,7 +3,7 @@ package run;
 import org.fusesource.jansi.Ansi.*;
 import org.fusesource.jansi.*;
 
-import org.apfloat.*;
+//import org.apfloat.*;
 
 import java.io.*;
 import java.util.*;
@@ -69,5 +69,7 @@ public class Main {
 				System.out.println();
 			}
 		}
+		
+		s.close();
 	}
 }

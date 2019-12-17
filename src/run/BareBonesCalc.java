@@ -5,12 +5,9 @@ import java.util.Properties;
 import org.apfloat.Apfloat;
 import org.apfloat.ApfloatContext;
 import org.apfloat.Apint;
-import org.fusesource.jansi.Ansi;
 
 public class BareBonesCalc {
 public static final double GAIN = 14.18164746272547765552552167818177086376912528982872695981685433294579740853885;
-	
-	private static Apfloat wrapper;
 	
 	public Apfloat result;
 	
@@ -22,10 +19,8 @@ public static final double GAIN = 14.1816474627254776555255216781817708637691252
 	public BareBonesCalc(long precision) {
 		
 		precision *= 1.01;
-
 		digits = precision;
 		iterations = (long)Math.ceil(digits/GAIN);
-		wrapper = new Apfloat(1,digits);
 		
 	}
 	

@@ -5,8 +5,6 @@ import java.util.Properties;
 import org.apfloat.Apfloat;
 import org.apfloat.ApfloatContext;
 import org.apfloat.ApfloatMath;
-import org.apfloat.spi.FilenameGenerator;
-import org.fusesource.jansi.Ansi;
 
 public class SquareRooter extends Thread{
 	private long digits;

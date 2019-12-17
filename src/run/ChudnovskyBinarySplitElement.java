@@ -1,7 +1,5 @@
 package run;
 
-import java.util.Properties;
-
 import org.apfloat.*;
 
 public class ChudnovskyBinarySplitElement extends Thread {
